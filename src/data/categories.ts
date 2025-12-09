@@ -1,0 +1,121 @@
+import { Category } from '@/types';
+
+export const categories: Category[] = [
+  {
+    id: 'join-bajaj-life',
+    name: 'Join Bajaj Life',
+    nameHi: 'बजाज लाइफ से जुड़ें',
+    icon: 'Briefcase',
+    restrictedTo: ['prospect_agent'],
+    modules: [
+      { id: 'about-bajaj', name: 'About Bajaj Life', nameHi: 'बजाज लाइफ के बारे में', icon: 'Info' },
+      { id: 'careers', name: 'Careers', nameHi: 'करियर', icon: 'GraduationCap' },
+      { id: 'insurance-easy', name: 'Insurance Made Easy', nameHi: 'बीमा आसान बनाया', icon: 'Lightbulb' },
+      { id: 'testimonials', name: 'Testimonials', nameHi: 'प्रशंसापत्र', icon: 'Quote' },
+      { id: 'product-suite', name: 'Our LI Product Suite', nameHi: 'हमारे उत्पाद', icon: 'Package' },
+    ],
+  },
+  {
+    id: 'my-activities',
+    name: 'My Activities',
+    nameHi: 'मेरी गतिविधियाँ',
+    icon: 'Activity',
+    modules: [
+      { id: 'kpi-snapshot', name: 'KPI Snapshot', nameHi: 'KPI स्नैपशॉट', icon: 'BarChart3', hasAiSummary: true },
+      { id: 'commission-snapshot', name: 'Commission Snapshot', nameHi: 'कमीशन स्नैपशॉट', icon: 'Trophy' },
+      { id: 'morning-huddle', name: 'Morning Huddle', nameHi: 'सुबह की बैठक', icon: 'Users' },
+      { id: 'daily-tracker', name: 'Daily Activity Tracker', nameHi: 'दैनिक गतिविधि ट्रैकर', icon: 'Calendar' },
+      { id: 'recommended', name: 'Recommended For You', nameHi: 'आपके लिए अनुशंसित', icon: 'Star' },
+      { id: 'org-updates', name: 'Organisational Updates', nameHi: 'संगठनात्मक अपडेट', icon: 'Bell' },
+    ],
+  },
+  {
+    id: 'recruitment-corner',
+    name: 'Recruitment Corner',
+    nameHi: 'भर्ती कोना',
+    icon: 'UserPlus',
+    modules: [
+      { id: 'recruitment-leads', name: 'Recruitment Leads', nameHi: 'भर्ती लीड्स', icon: 'Users', hasAiSummary: true },
+      { id: 'onboarding-tracker', name: 'Onboarding Tracker', nameHi: 'ऑनबोर्डिंग ट्रैकर', icon: 'ClipboardCheck' },
+      { id: 'ic-training', name: 'IC Training', nameHi: 'IC प्रशिक्षण', icon: 'BookOpen' },
+      { id: 'ic-activation', name: 'IC Activation', nameHi: 'IC सक्रियण', icon: 'Zap' },
+      { id: 'reports', name: 'Reports', nameHi: 'रिपोर्ट', icon: 'FileText' },
+    ],
+  },
+  {
+    id: 'lead-retention-pool',
+    name: 'Lead Retention Pool',
+    nameHi: 'लीड रिटेंशन पूल',
+    icon: 'Target',
+    modules: [
+      { id: 'retention-chart', name: 'Lead Retention Pie Chart', nameHi: 'लीड रिटेंशन चार्ट', icon: 'PieChart', hasAiSummary: true },
+      { id: 'negative-closures', name: 'Past Negative Closures', nameHi: 'पिछले नकारात्मक क्लोजर', icon: 'XCircle' },
+      { id: 'household-leads', name: 'Household Leads', nameHi: 'हाउसहोल्ड लीड्स', icon: 'Home' },
+      { id: 'referral-leads', name: 'Referral Leads', nameHi: 'रेफरल लीड्स', icon: 'Share2' },
+    ],
+  },
+  {
+    id: 'ic-prospect-tracker',
+    name: 'IC Prospect Tracker',
+    nameHi: 'IC प्रॉस्पेक्ट ट्रैकर',
+    icon: 'MapPin',
+    modules: [
+      { id: 'area-map', name: 'Area Map', nameHi: 'क्षेत्र मानचित्र', icon: 'Map' },
+      { id: 'my-leads', name: 'My Leads', nameHi: 'मेरी लीड्स', icon: 'Users', hasAiSummary: true },
+      { id: 'goal-sheet', name: 'Goal Sheet Calculator', nameHi: 'लक्ष्य शीट कैलकुलेटर', icon: 'Calculator' },
+      { id: 'lead-list', name: 'Lead List View', nameHi: 'लीड सूची दृश्य', icon: 'List' },
+      { id: 'login-journey', name: 'Login Journey', nameHi: 'लॉगिन जर्नी', icon: 'Route' },
+      { id: 'lead-summary', name: 'Lead Summary', nameHi: 'लीड सारांश', icon: 'FileBarChart' },
+    ],
+  },
+  {
+    id: 'my-customers',
+    name: 'My Customers',
+    nameHi: 'मेरे ग्राहक',
+    icon: 'Users',
+    modules: [
+      { id: 'all-customers', name: 'All Customers View', nameHi: 'सभी ग्राहक', icon: 'Users', hasAiSummary: true },
+      { id: 'renewals', name: 'Renewals / Maturity / Lapse', nameHi: 'नवीनीकरण / परिपक्वता', icon: 'RefreshCw' },
+      { id: 'campaigns', name: 'Campaigns & Upsell', nameHi: 'अभियान और अपसेल', icon: 'Megaphone' },
+      { id: 'customer-events', name: 'Customer Events', nameHi: 'ग्राहक इवेंट्स', icon: 'Gift' },
+      { id: 'customer-servicing', name: 'Customer Servicing', nameHi: 'ग्राहक सेवा', icon: 'Headphones' },
+    ],
+  },
+  {
+    id: 'my-performance',
+    name: 'My Performance',
+    nameHi: 'मेरा प्रदर्शन',
+    icon: 'TrendingUp',
+    modules: [
+      { id: 'kpi-breakup', name: 'KPI Breakup', nameHi: 'KPI ब्रेकअप', icon: 'BarChart3', hasAiSummary: true },
+      { id: 'incentive-snapshot', name: 'Incentive Snapshot', nameHi: 'इंसेंटिव स्नैपशॉट', icon: 'Award' },
+      { id: 'commission-view', name: 'Commission View', nameHi: 'कमीशन व्यू', icon: 'DollarSign' },
+      { id: 'rnr-contests', name: 'RnR & Contests', nameHi: 'R&R और प्रतियोगिताएं', icon: 'Trophy' },
+    ],
+  },
+  {
+    id: 'my-corner',
+    name: 'My Corner',
+    nameHi: 'मेरा कोना',
+    icon: 'User',
+    modules: [
+      { id: 'my-profile', name: 'My Profile', nameHi: 'मेरी प्रोफाइल', icon: 'User' },
+      { id: 'training-corner', name: 'Training Corner', nameHi: 'प्रशिक्षण कोना', icon: 'BookOpen' },
+      { id: 'career-path', name: 'Career Path', nameHi: 'करियर पथ', icon: 'Route' },
+      { id: 'support-help', name: 'Support & Help Desk', nameHi: 'सहायता और हेल्प डेस्क', icon: 'HelpCircle' },
+    ],
+  },
+];
+
+export const translations: Record<string, { EN: string; HI: string }> = {
+  welcome: { EN: 'Welcome', HI: 'स्वागत है' },
+  dashboard: { EN: 'Dashboard', HI: 'डैशबोर्ड' },
+  search: { EN: 'Search by keywords...', HI: 'कीवर्ड द्वारा खोजें...' },
+  login: { EN: 'Login', HI: 'लॉगिन' },
+  logout: { EN: 'Logout', HI: 'लॉगआउट' },
+  viewInsights: { EN: 'View Insights', HI: 'इनसाइट्स देखें' },
+  aiSummary: { EN: 'AI Summary', HI: 'AI सारांश' },
+  detailedView: { EN: 'Detailed View', HI: 'विस्तृत दृश्य' },
+  gridView: { EN: 'Menu Grid', HI: 'मेनू ग्रिड' },
+  chatView: { EN: 'AI Chat', HI: 'AI चैट' },
+};
