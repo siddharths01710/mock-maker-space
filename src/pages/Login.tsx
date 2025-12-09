@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Briefcase, Users, User, Crown, ArrowRight, Shield } from 'lucide-react';
+import { Briefcase, Users, User, Crown, ArrowRight, Shield, Phone } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useApp } from '@/contexts/AppContext';
@@ -25,7 +26,7 @@ const roles: { role: UserRole; name: string; description: string; icon: React.El
   {
     role: 'sales_manager',
     name: 'Sales Manager',
-    description: 'Manage your team and performance',
+    description: 'Manage your Leads, Customers and Agents',
     icon: Users,
     enabled: true,
   },
@@ -40,11 +41,12 @@ const roles: { role: UserRole; name: string; description: string; icon: React.El
 
 export default function Login() {
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
+  const [mobileNumber, setMobileNumber] = useState('');
   const { setUser } = useApp();
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (!selectedRole) return;
+    if (!selectedRole || mobileNumber.length < 10) return;
 
     const roleNames = {
       prospect_agent: 'Prospect User',
@@ -95,6 +97,29 @@ export default function Login() {
           <p className="text-primary-foreground/70">
             Select your role to continue
           </p>
+        </motion.div>
+
+        {/* Mobile Number Input */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mb-6"
+        >
+          <div className="relative">
+            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary-foreground/50" />
+            <Input
+              type="tel"
+              placeholder="Enter Mobile Number"
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+              className="pl-12 h-14 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-lg"
+              maxLength={10}
+            />
+          </div>
+          {mobileNumber.length > 0 && mobileNumber.length < 10 && (
+            <p className="text-primary-foreground/70 text-xs mt-2">Enter 10 digit mobile number</p>
+          )}
         </motion.div>
 
         {/* Role Cards */}
@@ -165,7 +190,7 @@ export default function Login() {
             variant="accent"
             size="xl"
             onClick={handleLogin}
-            disabled={!selectedRole}
+            disabled={!selectedRole || mobileNumber.length < 10}
             className="w-full"
           >
             Continue
@@ -180,7 +205,7 @@ export default function Login() {
           transition={{ delay: 0.5 }}
           className="text-center text-primary-foreground/50 text-xs mt-6"
         >
-          © 2025 Bajaj Allianz Life Insurance Co. Ltd.
+          © 2025 Bajaj Life Insurance Co. Ltd.
         </motion.p>
       </main>
     </div>
