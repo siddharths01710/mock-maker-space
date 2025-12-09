@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, Users, UserCheck, Clock, CheckCircle, XCircle, Gift, FileText, Target, BookOpen, ClipboardList, Phone, User, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -58,8 +58,16 @@ const getDispositionColor = (disposition: LeadDisposition) => {
 
 export default function LeadManagement() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [showLeadsList, setShowLeadsList] = useState(false);
   const [filterDisposition, setFilterDisposition] = useState<string | null>(null);
+
+  // Check if navigated from chat with view=leads param
+  useEffect(() => {
+    if (searchParams.get('view') === 'leads') {
+      setShowLeadsList(true);
+    }
+  }, [searchParams]);
 
   const filteredLeads = filterDisposition 
     ? mockLeads.filter(l => l.disposition === filterDisposition)
