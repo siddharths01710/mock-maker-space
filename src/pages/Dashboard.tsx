@@ -13,6 +13,7 @@ import { useApp } from '@/contexts/AppContext';
 import { translations } from '@/data/categories';
 import { KPI, PolicyEvent } from '@/types';
 import { motion } from 'framer-motion';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 const mockKPIs: KPI[] = [
   { id: '1', name: 'RNB', value: '₹45L', target: '₹60L', status: 'warning', trend: 'up' },
@@ -297,6 +298,8 @@ export default function Dashboard() {
           </div>
         </motion.section>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { AISummaryCard } from '@/components/shared/AISummaryCard';
 import { useApp } from '@/contexts/AppContext';
 import { categories } from '@/data/categories';
 import { motion } from 'framer-motion';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 // Mock data for different modules
 const mockRecruitmentLeads = [
@@ -567,6 +568,8 @@ export default function ModulePage() {
           {renderModuleContent()}
         </motion.section>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }

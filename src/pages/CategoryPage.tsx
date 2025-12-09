@@ -8,6 +8,7 @@ import { ModuleCard } from '@/components/shared/ModuleCard';
 import { useApp } from '@/contexts/AppContext';
 import { categories } from '@/data/categories';
 import { motion } from 'framer-motion';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -84,6 +85,8 @@ export default function CategoryPage() {
           </div>
         </motion.section>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }

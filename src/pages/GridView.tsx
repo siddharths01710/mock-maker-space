@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 export default function GridView() {
   const { language, user } = useApp();
@@ -112,6 +113,8 @@ export default function GridView() {
           ))}
         </div>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }
