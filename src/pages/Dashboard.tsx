@@ -20,6 +20,7 @@ const mockKPIs: KPI[] = [
   { id: '3', name: 'Issuance NOP', value: '18', target: '25', status: 'warning', trend: 'stable' },
   { id: '4', name: 'WPC', value: '₹32L', target: '₹40L', status: 'good', trend: 'up' },
   { id: '5', name: 'Persistency', value: '87%', target: '90%', status: 'critical', trend: 'down' },
+  { id: '6', name: '13M Persistency', value: '92%', target: '95%', status: 'good', trend: 'up' },
 ];
 
 const mockEvents: PolicyEvent[] = [
@@ -64,9 +65,6 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold mb-1">
             {t('welcome')}, {user?.name?.split(' ')[0]}! 👋
           </h1>
-          <p className="text-muted-foreground text-sm">
-            {language === 'HI' ? 'आज की गतिविधियों का अवलोकन' : "Here's your activity overview for today"}
-          </p>
         </motion.div>
 
         {/* Renewal Alert Card */}
@@ -111,7 +109,7 @@ export default function Dashboard() {
             </Button>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            {mockKPIs.slice(0, 4).map((kpi, index) => (
+            {mockKPIs.slice(0, 6).map((kpi, index) => (
               <KPICard key={kpi.id} kpi={kpi} index={index} />
             ))}
           </div>
@@ -130,32 +128,61 @@ export default function Dashboard() {
           />
         </motion.section>
 
-        {/* Commission Snapshot */}
+        {/* My Earnings Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
           className="mb-6"
         >
-          <Card className="bg-gradient-to-br from-primary/5 to-transparent border-primary/20">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold">My Earnings (YTD)</h2>
+            <Button variant="ghost" size="sm" className="text-primary">
+              View Details
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+          
+          {/* Total Earnings Card */}
+          <Card className="bg-gradient-to-br from-primary/5 to-transparent border-primary/20 mb-3">
             <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <Trophy className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">My Earnings (YTD)</p>
-                    <p className="text-2xl font-bold">₹2,45,890</p>
-                  </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <Trophy className="h-6 w-6 text-accent" />
                 </div>
-                <Button variant="outline" size="sm">
-                  View Split
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
+                <div>
+                  <p className="text-sm text-muted-foreground">Total Earnings</p>
+                  <p className="text-2xl font-bold">₹2,45,890</p>
+                </div>
               </div>
             </CardContent>
           </Card>
+          
+          {/* Split: Incentives & Commissions */}
+          <div className="grid grid-cols-2 gap-3">
+            <Card className="border-success/20 bg-success/5">
+              <CardContent className="p-4">
+                <div className="flex flex-col">
+                  <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center mb-2">
+                    <Gift className="h-5 w-5 text-success" />
+                  </div>
+                  <p className="text-xs text-muted-foreground">Incentives</p>
+                  <p className="text-xl font-bold text-success">₹85,450</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-primary/20 bg-primary/5">
+              <CardContent className="p-4">
+                <div className="flex flex-col">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
+                    <IndianRupee className="h-5 w-5 text-primary" />
+                  </div>
+                  <p className="text-xs text-muted-foreground">Commissions</p>
+                  <p className="text-xl font-bold text-primary">₹1,60,440</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </motion.section>
 
         {/* Morning Huddle */}
