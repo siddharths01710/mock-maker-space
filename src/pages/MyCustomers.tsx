@@ -10,6 +10,7 @@ import { AISummaryCard } from '@/components/shared/AISummaryCard';
 import { useApp } from '@/contexts/AppContext';
 import { translations } from '@/data/categories';
 import { motion } from 'framer-motion';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 interface Customer {
   id: string;
@@ -272,6 +273,8 @@ export default function MyCustomers() {
           )}
         </div>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }

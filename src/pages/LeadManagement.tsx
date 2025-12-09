@@ -8,6 +8,7 @@ import { TopNavBar } from '@/components/layout/TopNavBar';
 import { SideNavigation } from '@/components/layout/SideNavigation';
 import { AISummaryCard } from '@/components/shared/AISummaryCard';
 import { motion } from 'framer-motion';
+import { FloatingChatButton } from '@/components/shared/FloatingChatButton';
 
 type LeadDisposition = 'Assigned' | 'Follow Up' | 'Converted' | 'Negative';
 
@@ -187,6 +188,8 @@ export default function LeadManagement() {
             ))}
           </div>
         </main>
+
+        <FloatingChatButton />
       </div>
     );
   }
@@ -353,6 +356,8 @@ export default function LeadManagement() {
           </div>
         </motion.section>
       </main>
+
+      <FloatingChatButton />
     </div>
   );
 }
