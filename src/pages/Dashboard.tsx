@@ -19,7 +19,7 @@ const mockKPIs: KPI[] = [
   { id: '2', name: 'Login NOP', value: '24', target: '30', status: 'good', trend: 'up' },
   { id: '3', name: 'Issuance NOP', value: '18', target: '25', status: 'warning', trend: 'stable' },
   { id: '4', name: 'WPC', value: '₹32L', target: '₹40L', status: 'good', trend: 'up' },
-  { id: '5', name: 'Persistency', value: '87%', target: '90%', status: 'critical', trend: 'down' },
+  { id: '5', name: '25M Persistency', value: '87%', target: '90%', status: 'critical', trend: 'down' },
   { id: '6', name: '13M Persistency', value: '92%', target: '95%', status: 'good', trend: 'up' },
 ];
 
@@ -67,32 +67,6 @@ export default function Dashboard() {
           </h1>
         </motion.div>
 
-        {/* Renewal Alert Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-6"
-        >
-          <Card className="bg-gradient-to-r from-accent/10 to-accent/5 border-accent/20">
-            <CardContent className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                  <Bell className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-sm">Your Policy is due for Renewal</p>
-                  <p className="text-xs text-muted-foreground">
-                    Premium: <span className="font-semibold">₹19,458.32/Year</span> • Due: Oct 28, 2025
-                  </p>
-                </div>
-              </div>
-              <Button size="sm" variant="accent">
-                Pay Now
-              </Button>
-            </CardContent>
-          </Card>
-        </motion.div>
 
         {/* KPI Snapshot */}
         <motion.section
