@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Mic, Sparkles, ArrowRight, MessageSquare } from 'lucide-react';
+import { Send, Mic, Sparkles, ArrowRight, Square } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
 import { TopNavBar } from '@/components/layout/TopNavBar';
 import { SideNavigation } from '@/components/layout/SideNavigation';
 import { useApp } from '@/contexts/AppContext';
@@ -17,14 +16,16 @@ interface Message {
   moduleId?: string;
   categoryId?: string;
   moduleName?: string;
+  actionType?: 'leads' | 'module';
+  actionPath?: string;
 }
 
 const suggestedPrompts = [
   'Show me my KPIs',
+  'View all my Leads',
   'Recruitment Leads',
   'My Performance',
   'Customer Events',
-  'Training status',
 ];
 
 export default function ChatView() {
@@ -38,6 +39,7 @@ export default function ChatView() {
     },
   ]);
   const [inputValue, setInputValue] = useState('');
+  const [isRecording, setIsRecording] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -69,6 +71,16 @@ export default function ChatView() {
     return null;
   };
 
+  const checkLeadsQuery = (query: string): boolean => {
+    const lowerQuery = query.toLowerCase();
+    return (
+      lowerQuery.includes('view all my leads') ||
+      lowerQuery.includes('show my leads') ||
+      lowerQuery.includes('all leads') ||
+      lowerQuery.includes('my leads')
+    );
+  };
+
   const generateAISummary = (moduleName: string) => {
     const summaries: Record<string, string> = {
       'KPI Snapshot': 'Your current KPI status shows strong performance in Login NOP (80% achieved) but Persistency needs attention at 87%. Focus on the 3 lapsing policies to improve your score.',
@@ -90,29 +102,45 @@ export default function ChatView() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue('');
 
     // Simulate AI response
     setTimeout(() => {
-      const result = findModule(inputValue);
       let aiMessage: Message;
 
-      if (result) {
-        const { module, category } = result;
+      // Check for leads query first
+      if (checkLeadsQuery(currentInput)) {
+        const totalLeads = 24;
+        const leadsRequiringAction = 8;
         aiMessage = {
           id: (Date.now() + 1).toString(),
           type: 'ai',
-          content: generateAISummary(module.name),
-          moduleId: module.id,
-          categoryId: category.id,
-          moduleName: module.name,
+          content: `You have ${totalLeads} leads with ${leadsRequiringAction} requiring action.`,
+          actionType: 'leads',
+          actionPath: '/category/lead-retention-pool',
         };
       } else {
-        aiMessage = {
-          id: (Date.now() + 1).toString(),
-          type: 'ai',
-          content: "I couldn't find a specific module matching your query. Try asking about KPIs, Recruitment, Customers, Performance, or Training. You can also tap on the suggestions below!",
-        };
+        const result = findModule(currentInput);
+
+        if (result) {
+          const { module, category } = result;
+          aiMessage = {
+            id: (Date.now() + 1).toString(),
+            type: 'ai',
+            content: generateAISummary(module.name),
+            moduleId: module.id,
+            categoryId: category.id,
+            moduleName: module.name,
+            actionType: 'module',
+          };
+        } else {
+          aiMessage = {
+            id: (Date.now() + 1).toString(),
+            type: 'ai',
+            content: "I couldn't find a specific module matching your query. Try asking about KPIs, Leads, Customers, Performance, or Training. You can also tap on the suggestions below!",
+          };
+        }
       }
 
       setMessages((prev) => [...prev, aiMessage]);
@@ -121,6 +149,15 @@ export default function ChatView() {
 
   const handleOpenModule = (categoryId: string, moduleId: string) => {
     navigate(`/category/${categoryId}/module/${moduleId}`);
+  };
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
+
+  const handleVoiceToggle = () => {
+    setIsRecording(!isRecording);
+    // In a real app, this would start/stop actual voice recording
   };
 
   return (
@@ -156,7 +193,9 @@ export default function ChatView() {
                     </div>
                   )}
                   <p className="text-sm leading-relaxed">{message.content}</p>
-                  {message.moduleId && message.categoryId && (
+                  
+                  {/* Module CTA */}
+                  {message.actionType === 'module' && message.moduleId && message.categoryId && (
                     <Button
                       variant="outline"
                       size="sm"
@@ -164,6 +203,19 @@ export default function ChatView() {
                       className="mt-3 w-full"
                     >
                       Open {message.moduleName}
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  )}
+                  
+                  {/* Leads CTA */}
+                  {message.actionType === 'leads' && message.actionPath && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleNavigate(message.actionPath!)}
+                      className="mt-3 w-full"
+                    >
+                      Click here to view all leads
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
                   )}
@@ -207,37 +259,69 @@ export default function ChatView() {
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Ask me anything..."
                 className="pr-10"
+                disabled={isRecording}
               />
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
-              >
-                <Mic className="h-4 w-4 text-muted-foreground" />
-              </Button>
+              
+              {/* Voice Recording Button / Animation */}
+              {isRecording ? (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
+                  onClick={handleVoiceToggle}
+                >
+                  <div className="relative flex items-center justify-center">
+                    {/* Pulsing animation rings */}
+                    <motion.div
+                      className="absolute w-6 h-6 rounded-full bg-destructive/30"
+                      animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0.3, 0.7] }}
+                      transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <motion.div
+                      className="absolute w-4 h-4 rounded-full bg-destructive/50"
+                      animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0.4, 0.8] }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                    />
+                    {/* Stop button */}
+                    <Square className="h-3 w-3 text-destructive fill-destructive relative z-10" />
+                  </div>
+                </Button>
+              ) : (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
+                  onClick={handleVoiceToggle}
+                >
+                  <Mic className="h-4 w-4 text-muted-foreground" />
+                </Button>
+              )}
             </div>
-            <Button onClick={handleSend} size="icon" variant="accent">
+            <Button onClick={handleSend} size="icon" variant="accent" disabled={isRecording}>
               <Send className="h-4 w-4" />
             </Button>
           </div>
+          
+          {/* Recording indicator */}
+          <AnimatePresence>
+            {isRecording && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="flex items-center justify-center gap-2 mt-3"
+              >
+                <motion.div
+                  className="w-2 h-2 rounded-full bg-destructive"
+                  animate={{ opacity: [1, 0.4, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                />
+                <span className="text-sm text-muted-foreground">Recording... Tap stop to end</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </main>
-
-      {/* Floating Chat Button (visible on other pages) */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        className="fixed bottom-6 right-6 z-40"
-      >
-        <Button
-          variant="accent"
-          size="icon"
-          className="h-14 w-14 rounded-full shadow-lg"
-          onClick={() => {}}
-        >
-          <MessageSquare className="h-6 w-6" />
-        </Button>
-      </motion.div>
     </div>
   );
 }
