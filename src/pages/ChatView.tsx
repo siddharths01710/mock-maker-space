@@ -118,7 +118,7 @@ export default function ChatView() {
           type: 'ai',
           content: `You have ${totalLeads} leads with ${leadsRequiringAction} requiring action.`,
           actionType: 'leads',
-          actionPath: '/category/lead-retention-pool',
+          actionPath: '/category/lead-retention-pool?view=leads',
         };
       } else {
         const result = findModule(currentInput);
