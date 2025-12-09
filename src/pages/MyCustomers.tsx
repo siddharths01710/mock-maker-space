@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Users, RefreshCw, FileCheck, Clock, AlertTriangle, Home, Gift, Shield, Phone, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Users, RefreshCw, FileCheck, Clock, AlertTriangle, Home, Gift, Shield, Phone, ChevronRight, Headphones, FileText, MessageSquareHeart } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -140,6 +140,46 @@ export default function MyCustomers() {
                                 )}
                               </div>
                               <ChevronRight className="h-4 w-4 text-muted-foreground mt-1" />
+                            </div>
+                          </button>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Customer Servicing Tools */}
+              <Card>
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-sm mb-3">Customer Servicing</h3>
+                  <div className="space-y-2">
+                    {[
+                      { id: 'customer-servicing', label: 'Customer Servicing', subtitle: 'Raise and Track Customer SRs', icon: Headphones, color: 'bg-blue-500' },
+                      { id: 'policy-documents', label: 'Policy Documents', subtitle: 'Download Policy Statements and Documents with ease', icon: FileText, color: 'bg-green-500' },
+                      { id: 'customer-greeting', label: 'Customer Greeting', subtitle: 'Personalised Communication Templates', icon: MessageSquareHeart, color: 'bg-pink-500' },
+                    ].map((tool, index) => {
+                      const Icon = tool.icon;
+                      return (
+                        <motion.div
+                          key={tool.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                        >
+                          <button
+                            onClick={() => navigate(`/tool/${tool.id}`)}
+                            className="w-full p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors text-left"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className={`w-10 h-10 rounded-xl ${tool.color} flex items-center justify-center flex-shrink-0`}>
+                                <Icon className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-semibold">{tool.label}</p>
+                                <p className="text-xs text-muted-foreground">{tool.subtitle}</p>
+                              </div>
+                              <ChevronRight className="h-4 w-4 text-muted-foreground" />
                             </div>
                           </button>
                         </motion.div>
