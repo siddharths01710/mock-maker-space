@@ -96,26 +96,34 @@ export function SideNavigation() {
               </div>
             )}
 
-            {/* Navigation Items */}
+            {/* Navigation Items - Hide for Prospect Agents */}
             <div className="flex-1 overflow-y-auto py-2">
-              {filteredCategories.map((category, index) => (
-                <motion.button
-                  key={category.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  onClick={() => handleCategoryClick(category.id)}
-                  className="w-full flex items-center justify-between px-4 py-3 text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
-                >
-                  <div className="flex items-center gap-3">
-                    {getIcon(category.icon)}
-                    <span className="font-medium text-sm">
-                      {language === 'HI' ? category.nameHi : category.name}
-                    </span>
-                  </div>
-                  <ChevronRight className="h-4 w-4 opacity-50" />
-                </motion.button>
-              ))}
+              {user?.role === 'prospect_agent' ? (
+                <div className="px-4 py-6 text-center">
+                  <p className="text-primary-foreground/70 text-sm">
+                    Explore our company and career opportunities on the main page.
+                  </p>
+                </div>
+              ) : (
+                filteredCategories.map((category, index) => (
+                  <motion.button
+                    key={category.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    onClick={() => handleCategoryClick(category.id)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      {getIcon(category.icon)}
+                      <span className="font-medium text-sm">
+                        {language === 'HI' ? category.nameHi : category.name}
+                      </span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 opacity-50" />
+                  </motion.button>
+                ))
+              )}
             </div>
 
             {/* Footer */}

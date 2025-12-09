@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider, useApp } from "@/contexts/AppContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ProspectAgentDashboard from "./pages/ProspectAgentDashboard";
 import CategoryPage from "./pages/CategoryPage";
 import ModulePage from "./pages/ModulePage";
 import GridView from "./pages/GridView";
@@ -28,8 +29,13 @@ function AppRoutes() {
     );
   }
 
-  // Route based on view mode
+  // Route based on view mode and user role
   const getDashboardComponent = () => {
+    // Prospect agents always see their dedicated dashboard
+    if (user.role === 'prospect_agent') {
+      return <ProspectAgentDashboard />;
+    }
+    
     switch (viewMode) {
       case 'grid':
         return <GridView />;
