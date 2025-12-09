@@ -39,6 +39,7 @@ export const categories: Category[] = [
       { id: 'onboarding-tracker', name: 'Onboarding Tracker', nameHi: 'ऑनबोर्डिंग ट्रैकर', icon: 'ClipboardCheck' },
       { id: 'ic-training', name: 'IC Training', nameHi: 'IC प्रशिक्षण', icon: 'BookOpen' },
       { id: 'ic-activation', name: 'IC Activation', nameHi: 'IC सक्रियण', icon: 'Zap' },
+      { id: 'ic-prospect-tracker', name: 'IC Prospect Tracker', nameHi: 'IC प्रॉस्पेक्ट ट्रैकर', icon: 'MapPin' },
       { id: 'reports', name: 'Reports', nameHi: 'रिपोर्ट', icon: 'FileText' },
     ],
   },
@@ -52,20 +53,6 @@ export const categories: Category[] = [
       { id: 'negative-closures', name: 'Past Negative Closures', nameHi: 'पिछले नकारात्मक क्लोजर', icon: 'XCircle' },
       { id: 'household-leads', name: 'Household Leads', nameHi: 'हाउसहोल्ड लीड्स', icon: 'Home' },
       { id: 'referral-leads', name: 'Referral Leads', nameHi: 'रेफरल लीड्स', icon: 'Share2' },
-    ],
-  },
-  {
-    id: 'ic-prospect-tracker',
-    name: 'IC Prospect Tracker',
-    nameHi: 'IC प्रॉस्पेक्ट ट्रैकर',
-    icon: 'MapPin',
-    modules: [
-      { id: 'area-map', name: 'Area Map', nameHi: 'क्षेत्र मानचित्र', icon: 'Map' },
-      { id: 'my-leads', name: 'My Leads', nameHi: 'मेरी लीड्स', icon: 'Users', hasAiSummary: true },
-      { id: 'goal-sheet', name: 'Goal Sheet Calculator', nameHi: 'लक्ष्य शीट कैलकुलेटर', icon: 'Calculator' },
-      { id: 'lead-list', name: 'Lead List View', nameHi: 'लीड सूची दृश्य', icon: 'List' },
-      { id: 'login-journey', name: 'Login Journey', nameHi: 'लॉगिन जर्नी', icon: 'Route' },
-      { id: 'lead-summary', name: 'Lead Summary', nameHi: 'लीड सारांश', icon: 'FileBarChart' },
     ],
   },
   {

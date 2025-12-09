@@ -469,6 +469,38 @@ export default function ModulePage() {
           </div>
         );
 
+      case 'ic-prospect-tracker':
+        // IC Prospect Tracker opens the Area Map feature
+        return (
+          <div className="space-y-4">
+            <Card className="overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                <div className="text-center">
+                  <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
+                  <p className="font-medium">Pune - Kalyani Nagar</p>
+                  <p className="text-sm text-muted-foreground">3 Active Hotspots</p>
+                </div>
+              </div>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <h4 className="font-medium mb-3">Prospect Hotspots</h4>
+                <div className="space-y-2">
+                  {['Kalyani Nagar Main Road', 'Viman Nagar', 'Koregaon Park'].map((area, index) => (
+                    <div key={area} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                        <span className="text-sm">{area}</span>
+                      </div>
+                      <Badge variant="secondary" className="text-xs">{12 - index * 3} leads</Badge>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
       default:
         return (
           <Card>
