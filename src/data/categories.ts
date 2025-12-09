@@ -44,8 +44,8 @@ export const categories: Category[] = [
   },
   {
     id: 'lead-retention-pool',
-    name: 'Lead Retention Pool',
-    nameHi: 'लीड रिटेंशन पूल',
+    name: 'Lead Management',
+    nameHi: 'लीड प्रबंधन',
     icon: 'Target',
     modules: [
       { id: 'retention-chart', name: 'Lead Retention Pie Chart', nameHi: 'लीड रिटेंशन चार्ट', icon: 'PieChart', hasAiSummary: true },
