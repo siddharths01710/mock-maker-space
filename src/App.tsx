@@ -11,6 +11,7 @@ import ModulePage from "./pages/ModulePage";
 import GridView from "./pages/GridView";
 import ChatView from "./pages/ChatView";
 import LeadManagement from "./pages/LeadManagement";
+import MyCustomers from "./pages/MyCustomers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,7 +45,9 @@ function AppRoutes() {
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="/dashboard" element={getDashboardComponent()} />
       <Route path="/category/lead-retention-pool" element={<LeadManagement />} />
+      <Route path="/category/my-customers" element={<MyCustomers />} />
       <Route path="/category/:categoryId" element={<CategoryPage />} />
+      <Route path="/customer/:customerId" element={<MyCustomers />} />
       <Route path="/category/:categoryId/module/:moduleId" element={<ModulePage />} />
       <Route path="/lead/:leadId" element={<LeadManagement />} />
       <Route path="/tool/:toolId" element={<ModulePage />} />
