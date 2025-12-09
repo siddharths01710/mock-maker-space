@@ -113,7 +113,7 @@ export default function MyCustomers() {
               {/* Customer Summary Banner */}
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-sm mb-3">Customer Summary</h3>
+              <h3 className="font-semibold text-sm mb-3">Customer Summary</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {summaryItems.map((item, index) => {
                       const Icon = item.icon;
@@ -126,17 +126,17 @@ export default function MyCustomers() {
                         >
                           <button
                             onClick={() => handleCategoryClick(item.id)}
-                            className="w-full p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors text-left"
+                            className="w-full p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors text-left h-full"
                           >
                             <div className="flex items-start gap-2">
-                              <div className={`w-8 h-8 rounded-lg ${item.color} flex items-center justify-center flex-shrink-0`}>
-                                <Icon className="h-4 w-4 text-white" />
+                              <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center flex-shrink-0`}>
+                                <Icon className="h-3.5 w-3.5 text-white" />
                               </div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-lg font-bold">{item.count}</p>
-                                <p className="text-xs text-muted-foreground truncate">{item.label}</p>
+                              <div className="flex-1 min-w-0 overflow-hidden">
+                                <p className="text-base font-bold leading-tight">{item.count}</p>
+                                <p className="text-[10px] text-muted-foreground leading-tight">{item.label}</p>
                                 {item.subValue && (
-                                  <p className="text-xs font-medium text-primary mt-0.5">{item.subValue}</p>
+                                  <p className="text-[10px] font-medium text-primary mt-0.5">{item.subValue}</p>
                                 )}
                               </div>
                               <ChevronRight className="h-4 w-4 text-muted-foreground mt-1" />
