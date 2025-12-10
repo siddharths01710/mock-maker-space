@@ -46,7 +46,7 @@ export default function ProspectAgentDashboard() {
           <Card>
             <CardContent className="p-4">
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Bajaj Life Insurance Company Limited is a joint venture between Bajaj Finserv Limited and Allianz SE. 
+                Bajaj Life Insurance is one of the leading life insurance of India. 
                 With a legacy of over two decades, we are committed to protecting families and empowering them to achieve their life goals.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
