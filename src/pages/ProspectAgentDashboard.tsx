@@ -46,7 +46,7 @@ export default function ProspectAgentDashboard() {
           <Card>
             <CardContent className="p-4">
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Bajaj Allianz Life Insurance Company Limited is a joint venture between Bajaj Finserv Limited and Allianz SE. 
+                Bajaj Life Insurance Company Limited is a joint venture between Bajaj Finserv Limited and Allianz SE. 
                 With a legacy of over two decades, we are committed to protecting families and empowering them to achieve their life goals.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -248,13 +248,13 @@ export default function ProspectAgentDashboard() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Tarun Chugh</h3>
-                  <p className="text-xs text-muted-foreground mb-3">MD & CEO, Bajaj Allianz Life Insurance</p>
+                  <p className="text-xs text-muted-foreground mb-3">MD & CEO, Bajaj Life Insurance</p>
                 </div>
               </div>
               <div className="mt-4 pl-0">
                 <Quote className="h-5 w-5 text-primary/40 mb-2" />
                 <p className="text-sm text-muted-foreground italic leading-relaxed">
-                  "At Bajaj Allianz Life, we believe in empowering our people to achieve extraordinary results. 
+                  "At Bajaj Life, we believe in empowering our people to achieve extraordinary results.
                   Joining our team means becoming part of a family that values innovation, integrity, and customer-centricity. 
                   We invest in your growth through world-class training, cutting-edge technology, and a supportive environment 
                   that celebrates success. Together, we are not just selling insurance – we are protecting dreams and 
