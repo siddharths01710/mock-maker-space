@@ -46,7 +46,7 @@ export default function ProspectAgentDashboard() {
           <Card>
             <CardContent className="p-4">
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Bajaj Life Insurance is one of the leading life insurance of India. 
+                Bajaj Life Insurance is one of the leading life insurance providers of India. 
                 With a legacy of over two decades, we are committed to protecting families and empowering them to achieve their life goals.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
