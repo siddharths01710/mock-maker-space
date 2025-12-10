@@ -62,9 +62,9 @@ export default function ModulePage() {
         return (
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold mb-4">About Bajaj Allianz Life Insurance</h3>
+              <h3 className="font-semibold mb-4">About Bajaj Life Insurance</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Bajaj Allianz Life Insurance Company Limited is a joint venture between Bajaj Finserv Limited and Allianz SE. 
+                Bajaj Life Insurance Company Limited is a joint venture between Bajaj Finserv Limited and Allianz SE.
                 With a legacy of over two decades, we are committed to protecting families and empowering them to achieve their life goals.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -169,7 +169,7 @@ export default function ModulePage() {
                     <h3 className="font-semibold">CEO's Message</h3>
                     <p className="text-xs text-muted-foreground mb-3">Tarun Chugh, MD & CEO</p>
                     <p className="text-sm text-muted-foreground italic">
-                      "At Bajaj Allianz Life, we believe in empowering our sales force with the best tools and support. 
+                      "At Bajaj Life, we believe in empowering our sales force with the best tools and support. 
                       Our commitment to your success is unwavering, and together we will continue to protect millions of families across India."
                     </p>
                   </div>
