@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useApp } from '@/contexts/AppContext';
 import { UserRole } from '@/types';
 import { motion } from 'framer-motion';
+import BajajLifeLogo from '@/assets/BajajLife.svg';
 
 const roles: { role: UserRole; name: string; description: string; icon: React.ElementType; enabled: boolean }[] = [
   {
@@ -65,7 +66,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen gradient-primary flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
       <header className="p-6">
         <motion.div
@@ -73,12 +74,10 @@ export default function Login() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-3"
         >
-          <div className="w-12 h-12 rounded-xl bg-primary-foreground flex items-center justify-center shadow-lg">
-            <span className="text-primary font-bold text-lg">BL</span>
-          </div>
+          <img src={BajajLifeLogo} alt="Bajaj Life" className="w-12 h-12" />
           <div>
-            <h1 className="text-primary-foreground font-bold text-xl">Bajaj Life</h1>
-            <p className="text-primary-foreground/70 text-sm">Pre-Sales Portal</p>
+            <h1 className="text-primary font-bold text-xl">Bajaj Life</h1>
+            <p className="text-muted-foreground text-sm">Pre-Sales Portal</p>
           </div>
         </motion.div>
       </header>
@@ -91,10 +90,10 @@ export default function Login() {
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
-          <h2 className="text-primary-foreground text-2xl font-bold mb-2">
+          <h2 className="text-primary text-2xl font-bold mb-2">
             Welcome Back!
           </h2>
-          <p className="text-primary-foreground/70">
+          <p className="text-muted-foreground">
             Select your role to continue
           </p>
         </motion.div>
@@ -107,18 +106,18 @@ export default function Login() {
           className="mb-6"
         >
           <div className="relative">
-            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary-foreground/50" />
+            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="tel"
               placeholder="Enter Mobile Number"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
-              className="pl-12 h-14 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 text-lg"
+              className="pl-12 h-14 bg-muted/50 border-border text-foreground placeholder:text-muted-foreground text-lg"
               maxLength={10}
             />
           </div>
           {mobileNumber.length > 0 && mobileNumber.length < 10 && (
-            <p className="text-primary-foreground/70 text-xs mt-2">Enter 10 digit mobile number</p>
+            <p className="text-muted-foreground text-xs mt-2">Enter 10 digit mobile number</p>
           )}
         </motion.div>
 
@@ -203,7 +202,7 @@ export default function Login() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="text-center text-primary-foreground/50 text-xs mt-6"
+          className="text-center text-muted-foreground text-xs mt-6"
         >
           © 2025 Bajaj Life Insurance Co. Ltd.
         </motion.p>
