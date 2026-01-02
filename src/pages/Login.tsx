@@ -134,7 +134,7 @@ export default function Login() {
                 onClick={() => role.enabled && setSelectedRole(role.role)}
                 className={`cursor-pointer transition-all duration-200 ${
                   selectedRole === role.role
-                    ? 'ring-2 ring-accent border-accent shadow-lg'
+                    ? 'ring-2 ring-primary border-primary shadow-lg'
                     : role.enabled
                     ? 'hover:shadow-md hover:border-primary/30'
                     : 'opacity-50 cursor-not-allowed'
@@ -145,7 +145,7 @@ export default function Login() {
                     <div
                       className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                         selectedRole === role.role
-                          ? 'bg-accent text-accent-foreground'
+                          ? 'bg-primary text-primary-foreground'
                           : 'bg-primary/10 text-primary'
                       }`}
                     >
@@ -166,9 +166,9 @@ export default function Login() {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="w-6 h-6 rounded-full bg-accent flex items-center justify-center"
+                        className="w-6 h-6 rounded-full bg-primary flex items-center justify-center"
                       >
-                        <Shield className="h-3 w-3 text-accent-foreground" />
+                        <Shield className="h-3 w-3 text-primary-foreground" />
                       </motion.div>
                     )}
                   </div>
