@@ -21,7 +21,7 @@ const roles: { role: UserRole; name: string; description: string; icon: React.El
     name: 'Agent',
     description: 'Active insurance agents',
     icon: User,
-    enabled: false,
+    enabled: true,
   },
   {
     role: 'sales_manager',
@@ -35,7 +35,7 @@ const roles: { role: UserRole; name: string; description: string; icon: React.El
     name: 'Upper Hierarchy',
     description: 'Regional and branch leadership',
     icon: Crown,
-    enabled: false,
+    enabled: true,
   },
 ];
 
