@@ -273,17 +273,17 @@ export default function ChatView() {
                   <div className="relative flex items-center justify-center">
                     {/* Pulsing animation rings */}
                     <motion.div
-                      className="absolute w-6 h-6 rounded-full bg-destructive/30"
+                      className="absolute w-6 h-6 rounded-full bg-success/30"
                       animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0.3, 0.7] }}
                       transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                     />
                     <motion.div
-                      className="absolute w-4 h-4 rounded-full bg-destructive/50"
+                      className="absolute w-4 h-4 rounded-full bg-success/50"
                       animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0.4, 0.8] }}
                       transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
                     />
                     {/* Stop button */}
-                    <Square className="h-3 w-3 text-destructive fill-destructive relative z-10" />
+                    <Square className="h-3 w-3 text-success fill-success relative z-10" />
                   </div>
                 </Button>
               ) : (
@@ -311,12 +311,12 @@ export default function ChatView() {
                 exit={{ opacity: 0, y: 10 }}
                 className="flex items-center justify-center gap-2 mt-3"
               >
-                <motion.div
-                  className="w-2 h-2 rounded-full bg-destructive"
+              <motion.div
+                  className="w-2 h-2 rounded-full bg-success"
                   animate={{ opacity: [1, 0.4, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity }}
                 />
-                <span className="text-sm text-muted-foreground">Recording... Tap stop to end</span>
+                <span className="text-sm text-muted-foreground">Listening... Tap stop to end</span>
               </motion.div>
             )}
           </AnimatePresence>
